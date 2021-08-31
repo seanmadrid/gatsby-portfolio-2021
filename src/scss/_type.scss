@@ -1,0 +1,111 @@
+//FONT SIZES
+.xs_sm {
+	font-size: 1.2rem;
+	line-height: 2.4rem;
+	word-spacing: 2px;
+	letter-spacing: 1px;
+	@media only screen and (min-width:$bp-700) {
+		font-size: 1.4rem;
+	}
+}
+
+.sm_sm {
+	font-size: 1.4rem;
+	line-height: 2.8rem;
+	@media only screen and (min-width:$bp-1200) {
+		font-size: 1.6rem;
+		line-height: 2.25rem;
+	}
+}
+
+.sm_m {
+	font-size: 1.6rem;
+	line-height: 2.1rem;
+	@media only screen and (min-width:$bp-700) {
+		line-height: 2.8rem;
+		font-size: 2.0rem;
+	}
+}
+
+.m_m {
+	font-size: 1.8rem;
+	line-height: 2.4rem;
+	@media only screen and (min-width:$bp-700) {
+		font-size: 2.5rem;
+		line-height: 3.6rem;
+	}
+}
+
+.m_lg {
+	font-size: 2.6rem;
+	@media only screen and (min-width:$bp-700) {
+		font-size: 3.2rem;
+	}
+}
+
+.lg_xl {
+	font-size: 3rem;
+	line-height: 3.6rem;
+	letter-spacing: 3.5px;
+	@media only screen and (min-width:$bp-1100) {
+		font-size: 4rem;
+		line-height: 4.8rem;
+	}
+	@media only screen and (min-width:$bp-1100) {
+		font-size: 5rem;
+		line-height: 6.8rem;
+		letter-spacing: 3.5px;
+	}
+}
+
+.body-text {
+	font-size: 1.6rem;
+	line-height: 2.4rem;
+	font-family: $ff-body;
+	@media only screen and (min-width:$bp-700) {
+		line-height: 3.2rem;
+		font-size: 1.8rem;
+	}
+}
+
+//HEADER STYLES
+.header-xl, .header-l {
+	font-family: $ff-header;
+}
+
+.header-xl {
+	@extend .lg_xl;
+	font-weight: 500;
+}
+
+.header-l {
+	@extend .m_lg;
+	font-weight: 400;
+	color: $c-transgreen;
+}
+
+.header-m {
+	@extend .m_m;
+	font-family: $ff-base;
+	letter-spacing: 1px;
+	font-weight: lighter;
+	margin: 3.1rem 0 0;
+}
+
+.header-sm {
+	@extend .sm_m;
+	line-height: 2.6rem;
+	letter-spacing: 1px;
+	font-family: $ff-header;
+	font-weight: bold;
+}
+
+.header-xs {
+	@extend .sm_sm;
+}
+
+.page-title {
+	@extend .header-xl;
+	color: $c-acid !important;
+	text-align: center;
+}

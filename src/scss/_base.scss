@@ -1,0 +1,35 @@
+html, body {
+	font-size: 10px;
+	color: $c-text;
+	font-weight: 200;
+	background: #2B2B2B;
+	font-family: $ff-base;
+	margin: 0;
+	* {
+		box-sizing: border-box;
+	}
+	canvas {
+		opacity: 1;
+		// display: none;
+	}
+}
+
+html {
+	width: 100vw;
+	overflow-x: hidden;
+}
+
+main {
+	z-index: 9999;
+	.box {
+		z-index: 1;
+	}
+} 
+
+div.tl-edges {
+	overflow: visible;
+}
+
+.tl-wrapper {
+	pointer-events: none;
+}

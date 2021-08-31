@@ -1,0 +1,217 @@
+.waves-wrapper {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+  	transform: translate3d(0,0,0);
+  	transform-style: preserve-3d;
+	// opacity: .5;
+  	#wavesgradient {
+  		display: block;
+  		position: fixed;
+  		width: 100%;
+  		height: 100%;
+  		top: 0;
+  		left: 0;
+  		pointer-events: none;
+  	}
+	canvas.vanta-canvas {
+		min-width: 105vw;
+	}
+}
+
+.profile-icons {
+	position: fixed;
+	z-index: 9999;
+	bottom: 1rem;
+	left: 1rem;
+	@media only screen and (min-width:$bp-1000) {
+		left: 3rem;
+		bottom: 3rem;
+	}
+	a {
+		display: block;
+		text-indent: -9999px;
+		width: 2rem;
+		height: 2rem;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		transition: all .25s;
+		backface-visibility: hidden;
+		&.github {
+			background-size: 130%;
+		}
+		@media only screen and (min-width:$bp-800) {
+			width: 2rem;
+			height: 2rem;
+		}
+		&:hover {
+			transform: scale(1.5);
+		}
+		&:not(:last-child) {
+			margin-bottom: 2.5rem;
+		}
+		&.instagram {
+			background-image: url($svg-instagram);
+		}
+		&.linkedin {
+			background-image: url($svg-linkedin);
+		}
+		&.github {
+			background-image: url($svg-github);
+		}
+		&.codepen {
+			background-image: url($svg-codepen);
+		}
+	}
+}
+
+$d-desktop-mh: 450px;
+
+.desktop-menu {
+	position: fixed;
+	transform: translate3d(0, 0, 0) rotate(90deg);
+	right: 1rem;
+	top: 1.5rem;
+	height: 389px;
+	width: 389px;
+	z-index: 999;
+	transform-style: preserve-3d;
+	backface-visibility: hidden;
+	perspective: 1000;
+	display: none;
+	pointer-events: none;
+	@media only screen and (min-width:$bp-1100) {
+		display: block;
+	}
+	a {
+		float: left;
+		display: block;
+		margin-right: 3rem;
+		// text-transform: uppercase;
+		text-decoration: none;
+		color: $c-acid;
+		@extend .sm_sm;
+		letter-spacing: 3px;
+		position: relative;
+		transition: all .25s;
+		pointer-events: all;
+		backface-visibility: hidden;
+		font-weight: 300;
+		&:after {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 4px;
+			background-color: $c-pink;
+			top: 3rem;
+			left: -2px;
+			opacity: 0;
+			transition: all .25s;
+		}
+		&:hover {
+			transform: scale(1.25);
+		}
+		&.active {
+			color: $c-darkgreen;
+			pointer-events: none;
+			&:after {
+				opacity: 1;				
+			}
+		}
+	}
+
+	a[aria-current="page"] {
+	    font-weight: bold;
+	    pointer-events: none;
+	    &:after {
+			opacity: 1;
+			left: -2px;
+			top: 2.5rem;
+		}
+	}
+
+	&.submenu a.active {		
+		color: $c-blue;
+		&:after {
+			display: none;
+		}		
+	}
+
+	@media only screen and (min-width:$bp-800) {
+		right: 1.5rem;
+		top: 2rem;
+		height: $d-desktop-mh;
+	    width: $d-desktop-mh;
+	}
+}
+
+.hamburger {
+	position: fixed;
+	right: 1rem;
+	top: 1rem;
+	font-size: 2.4rem;
+	cursor: pointer;
+	z-index: 999;
+	line-height: 2.85rem;
+    text-align: center;
+    color: $c-acid;
+    font-weight: 800;
+	@media only screen and (min-width:$bp-1100) {
+		display: none;
+	}
+}
+
+.mobile-menu {
+	position: fixed;
+	z-index: 9999;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: $c-transgreen;
+	transition: all .5s;
+	&.closed {
+		opacity: 0;
+		pointer-events: none;
+	}
+	&.opened {
+		opacity: 1;
+		pointer-events: all;
+	}
+	.close {
+		position: absolute;
+	    top: .2rem;
+	    right: 1.75rem;
+	    font-size: 3.5rem;
+	    line-height: 5rem;
+	    text-align: center;	    
+	    color: $c-blue;
+	    font-weight: 500;
+	    cursor: pointer
+	}
+	.mobile-menu-wrap {
+		position: absolute;
+	    top: 50%;
+	    transform: translateY(-50%);
+		left: 4rem;
+	}
+	a {
+		@extend .m_lg;
+		font-weight: 400;
+		width: 100%;
+		display: block;
+		text-decoration: none;
+		color: $c-blue;
+		margin-bottom: 3rem;
+	}
+	a[aria-current="page"]:not(.mobile-home-link) {
+	    font-weight: 400;
+	    pointer-events: none;
+	}
+	@media only screen and (min-width:$bp-800) {
+		display: none;
+	}
+}

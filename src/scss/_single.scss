@@ -1,0 +1,280 @@
+.single-project-wrap {
+    position: relative;
+    float: left;
+    display: block;
+    margin-left: 50%;
+    margin-top: 10rem;
+    transform: translateX(-50%);
+    pointer-events: all;
+    z-index: 999;
+    padding: 0 3rem;
+    @extend .cc-l;
+
+    h1 {
+        @extend .page-title;
+        text-align: left;
+        // @media only screen and (min-width: $bp-1100) {
+        //     text-align: center;
+        // }
+    }
+
+    .work-buttons {
+        width: auto;
+        float: left;
+        margin-left: 1rem;
+
+        // @media only screen and (min-width: $bp-1100) {
+        //     margin-left: 50%;
+        //     transform: translateX(-50%);
+        // }
+
+        a {
+            background-color: transparent;
+            box-shadow: none;
+            svg {
+                path, rect {
+                    fill: $c-lightblue;
+                }
+            }
+            span {
+                color: $c-acid;
+                top: calc(100% + .5rem);
+                opacity: 1;
+                color: $c-lightblue;
+                @media only screen and (min-width: $bp-1100) {
+                    opacity: 0;
+                }
+            }
+        }
+
+        &:last-of-type {
+            margin-top: 6rem;
+        }
+
+    }
+
+    // @media only screen and (min-width:$bp-800) {
+    //     padding-right: 0;
+    // }
+}
+
+.project-content {
+    @extend .body-text;
+    pointer-events: all;
+    position: relative;
+    float: left;
+    margin-top: 0rem;
+    width: 100%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+
+    >div {
+        position: relative;
+        float: left;
+        width: 100%;
+    }
+
+    a {
+        text-decoration: none;
+        transition: all .25s;
+        color: $c-acid;
+        border-bottom: solid 1px $c-acid;
+
+        &:hover {
+            color: $c-orange;
+            border-color: $c-orange;
+        }
+    }
+
+    figure {
+        position: relative;
+        float: left;
+        width: 100%;
+        margin: 2rem 0;
+
+        img {
+            display: block;
+            float: left;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            height: auto;
+            width: 100%;
+            @media only screen and (min-width: $bp-800) {
+                width: auto;
+                max-width: 800px;
+            }
+        }
+    }
+
+    table.wp-block-table.aligncenter {
+    	@media only screen and (min-width: $bp-1200) {
+            width: calc(100% + 16rem);
+            max-width: calc(100% + 16rem);
+            margin-left: -8rem;
+        }
+        img {
+            height: auto;
+            border-radius: 5px;
+            overflow: hidden;
+            width: 100% !important;
+            @media only screen and (min-width: $bp-800) {
+                border-radius: 10px;
+            }
+        }
+    }
+
+    h4,
+    p,
+    figcaption {
+        position: relative;
+        float: left;
+        display: block;
+        margin: 1rem 0;
+        clear: both;
+        @extend .clear;
+    }
+
+    h4, p {
+        max-width: 80rem;
+    }
+
+    figcaption {
+        @extend .xs_sm;
+        text-align: center;
+        font-style: italic;
+        color: lightgrey;
+
+        @media only screen and (min-width: $bp-1200) {
+            width: calc(100% + 16rem);
+            max-width: calc(100% + 16rem);
+            margin-left: -8rem;
+        }
+    }
+
+    h3 {
+        @extend .m_lg;
+        font-weight: 500;
+        font-family: $ff-header;
+        color: $c-acid;
+        position: relative;
+        // padding: 0 1rem;
+        text-transform: uppercase;
+        display: block;
+        float: left;
+        &:not(:first-child) {
+            margin-top: 3rem;
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background-color: $c-pink;
+            bottom: -10px;
+            left: 0;
+            z-index: -1;
+        }
+
+        &:after {
+            content: ":";
+        }
+
+    }
+
+    h4 {
+        @extend .m_m;
+        font-family: $ff-header;
+        color: $c-lightblue;
+        font-weight: 500;
+    }
+
+    figure.wp-block-image {
+        @extend .clear;
+        float: left;
+
+        img {
+            box-shadow: $ts-primary;
+            // border-radius: 1rem;
+            width: 100%;
+            display: block;
+            width: auto;
+            max-width: 100%;
+            @media only screen and (min-width: $bp-1200) {
+                
+                max-width: 800px;
+                // max-width: 100%;
+            }
+        }
+    }
+}
+
+.project-index.other-projects {
+    width: 100vw;
+    padding: 4rem 6rem;
+    margin: 6rem 0 0 0;
+    transform: none;
+    @media only screen and (min-width: $bp-800) {
+        padding: 4rem 8rem;
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
+    &:before {
+        content: '';
+        z-index: -1;
+        display: block;
+        width: 100vw;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: $c-offwhite;
+        // box-shadow: 0px -4px 16px rgba(10, 25, 49, .6);
+        opacity: .1;
+    }
+    .flex {
+        width: 100%;
+        max-width: 80rem;
+        margin: 4rem auto;
+        gap: 1.5rem;
+        position: relative;
+        justify-content: space-between;
+        .single-project {
+            float: none;
+            margin-bottom: 1.5rem;
+            width: 100%;
+            @media only screen and (min-width: $bp-700) {
+                width: calc((100% / 2) - 1.5rem);
+            }
+        }
+    }
+    h2 {
+        @extend .header-l;
+        font-weight: 500;
+        width: 100%;
+        text-align: center;
+        color: $c-lightblue;
+        margin: 4rem 0;
+        font-weight: 700;
+    }
+    .see-all-link {
+        pointer-events: all;
+        display: block;		
+        text-decoration: none;
+        font-family: $ff-header;
+        font-size: 1.8rem;
+        transition: all .25s;
+        color: $c-acid;
+        margin-top: 2.5rem;
+        width: auto;
+        font-weight: 700;
+        transition: all .3333s;
+        backface-visibility: hidden;
+        width: 100%;
+        text-align: center;
+        &:hover {
+            color: $c-pink;
+        }
+    }
+}

@@ -1,0 +1,66 @@
+.fw {
+    width: calc(100% - 6rem);
+    @media only screen and (min-width:$bp-800){ 
+        width: calc(100% - 14rem);
+    }
+}
+
+.container {
+    @extend .fw;
+    margin: auto;
+}
+
+.cc-xs {
+    @extend .fw;
+    margin: auto;
+    max-width: $d-max-width-xs;
+}
+
+.cc-sm {
+    @extend .fw;
+    margin: auto;
+    max-width: $d-max-width-sm;
+}
+
+.cc{
+    @extend .fw;
+    margin: auto;
+    max-width: $d-max-width;
+}
+
+.cc-m{
+    @extend .fw;
+    margin: auto;
+    max-width: $d-max-width-m;
+}
+
+.cc-l{
+    @extend .fw;
+    margin: auto;
+    max-width: $d-max-width-l;
+}
+
+.cc-xl {
+    @extend .fw;
+    margin: auto;
+    max-width: $d-max-width-xl;
+}
+
+.cc-xxl {
+    @extend .fw;
+    margin: auto;
+    max-width: calc(#{$d-max-width-xl} - 4rem);
+    @media only screen and (min-width:$bp-1200){ 
+        max-width: $d-max-width-xxl;
+    }
+}
+
+.clear:before,
+.clear:after {
+    content: " ";
+    display: table;
+}
+
+.clear:after {
+    clear: both;
+}

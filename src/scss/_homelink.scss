@@ -1,0 +1,189 @@
+.home-link {
+    span.text {
+        display: block;
+        position: absolute;
+        text-indent: -9999px;
+    }
+
+    position: fixed;
+    top: 2.5rem;
+    left: 2.5rem;
+    transform: translateY(-50%) translateX(-50%);
+    transform-origin: center;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    transition: all .25s;
+    backface-visibility: hidden;
+    z-index: 9998;
+
+    @media only screen and (min-width:$bp-1000) {
+        top: 4rem;
+        left: 4rem;
+        width: 1.6rem;
+        height: 1.6rem;
+
+        &.not-touch {
+            background-color: $c-green;
+
+            &:hover,
+            &:focus {
+                outline: 0px;
+                width: 4.8rem;
+                height: 4.8rem;
+                background-color: $c-lightblue;
+
+                .house,
+                svg#colorful_house {
+                    opacity: 1 !important;
+                }
+            }
+        }
+    }
+
+    .house {
+        width: 22px;
+        height: 28px;
+        position: relative;
+        margin-top: 50%;
+        margin-left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        opacity: 1;
+        transition: all .35s;
+        backface-visibility: hidden;
+
+        @media only screen and (min-width: $bp-1000) {
+            opacity: 0;
+            &.is-touchscreen {
+                opacity: 1;
+            }
+        }
+
+        &.not-touch {
+            svg#colorful_house {
+                display: none;
+                transition: all .35s;
+                @media only screen and (min-width: $bp-1000) {
+                    display: block;
+                    opacity: 0;
+                }
+            }
+
+            svg#light_blue_house {
+                @media only screen and (min-width: $bp-1000) {
+                    display: none;
+                }
+            }
+        }
+
+        &.is-touchscreen {
+            svg#colorful_house {
+                display: none;
+
+                @media only screen and (min-width: $bp-1000) {
+                    display: none;
+                }
+            }
+
+            svg#light_blue_house {
+                path {
+                    fill: $c-acid;
+                }
+                @media only screen and (min-width: $bp-1000) {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+.home-link.mobile-home-link {
+    position: relative;
+    left: 1rem;
+    margin-bottom: 4rem;
+    height: 28px;
+    width: 22px;
+    .house {
+        margin: 0;
+        transform: none;
+    }
+}
+
+header.home .home-link {
+    pointer-events: none;
+
+    @media only screen and (min-width: $bp-1000) {
+        position: fixed;
+        top: 2.5rem;
+        left: 2.5rem;
+        transform: translateY(-50%) translateX(-50%);
+        transform-origin: center;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        transition: all .25s;
+        backface-visibility: hidden;
+        z-index: 9999;
+        top: 4rem;
+        left: 4rem;
+        width: 1.6rem;
+        height: 1.6rem;
+        background-color: $c-green;
+
+        &:hover,
+        &:focus {
+            top: 4rem;
+            left: 4rem;
+            width: 1.6rem;
+            height: 1.6rem;
+            background-color: $c-green;
+        }
+
+        .house {
+            opacity: 0;
+        }
+    }
+
+    .house {
+        width: 22px;
+        height: 28px;
+        position: relative;
+        margin-top: 50%;
+        margin-left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        opacity: 1;
+        transition: all .35s;
+        backface-visibility: hidden;
+
+
+        // @media only screen and (min-width: $bp-1000) {
+        //     opacity: 0;
+        // }
+
+        svg#colorful_house {
+            display: none !important;
+
+            @media only screen and (min-width: $bp-1000) {
+                display: none !important;
+            }
+        }
+
+        svg#light_blue_house {
+            display: none !important;
+        }
+
+        // &.is-touchscreen {
+        //     svg#colorful_house {
+        //         display: none;
+        //         @media only screen and (min-width: $bp-1000) {
+        //             display: none;
+        //         }
+        //     }
+        //     svg#light_blue_house {
+        //         @media only screen and (min-width: $bp-1000) {
+        //             display: block;
+        //         }
+        //     }
+        // }
+    }
+}
