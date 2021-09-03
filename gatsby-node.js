@@ -4,56 +4,34 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-// You can delete this file if you're not using it
-const _ = require(`lodash`)
-const path = require(`path`)
-const slash = require(`slash`)
+const path = require("path")
 
-// Implement the Gatsby API “createPages”. This is
-// called after the Gatsby bootstrap is finished so you have
-// access to any information necessary to programmatically
-// create pages.
-// Will create pages for WordPress pages (route : /{slug})
-// Will create pages for WordPress posts (route : /post/{slug})
-exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
-
-  // The “graphql” function allows us to run arbitrary
-  // queries against the local Gatsby GraphQL schema. Think of
-  // it like the site has a built-in database constructed
-  // from the fetched data that you can run queries against.
-  const result = await graphql(
-    `
-      {
+exports.createPages = async function ({ actions, graphql }) {
+  const result = await graphql(`
+      query {
         allWpWork {
-          edges {
-            node {
-              id
-              slug
-              status
-              content(format: RENDERED)
-            }
+          nodes {
+            slug
+            id
           }
         }
       }
-    `
-  ).then(result => {
-    if (result.errors) {
-      console.log(result.errors)
-      reject(result.errors)
-    }
+    `)
 
-    const pageTemplate = path.resolve(`./src/templates/work-template.js`)
+  if (result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`)
+    return
+  }
 
-    _.each(result.data.allWpWorks.edges, edge => {
-      createPage({
-        path: `/work/${edge.node.slug}/`,
-        component: slash(pageTemplate),
-        context: {
-          id: edge.node.id,
-          canonical: `https://seanmadrid.com/work/${edge.node.slug}/`,
-        },
-      })
+  const workTemplate = path.resolve(`./src/templates/work-template.js`)
+  
+  result.data.allWpWork.nodes.forEach(node => {
+    const slug = node.slug
+    const id = node.id
+    actions.createPage({
+      path: `/work/${slug}`,
+      component: workTemplate,
+      context: { id: id },
     })
   })
 }

@@ -45,6 +45,8 @@ export default class WorkPage extends React.Component {
               let view_link;
               let code_link;
               let story_link;
+              const iss = project.featuredImage.node.localFile.childImageSharp.gatsbyImageData.images.sources[0];
+              const imageSrc = project.featuredImage.node.localFile.childImageSharp.gatsbyImageData.images.fallback.src;
 
               if (project.workFields.liveUrl) {
                 view_link = project.workFields.liveUrl.url;
@@ -63,10 +65,11 @@ export default class WorkPage extends React.Component {
               } else {
                 story_link = "";
               }
+
               return (
                 <div key={n} className="single-project">
                   <div className="image-wrapper">
-                    <Link to={story_link} className="image-link" ><img className="featured-project-image" src={project.featuredImage.node.sourceUrl} alt={project.featuredImage.node.altText} /></Link>
+                    <Link to={story_link} className="image-link" ><img className="featured-project-image" srcSet={iss['srcSet']} sizes={iss['sizes']} src={imageSrc} alt={project.featuredImage.node.altText} /></Link>
                   </div>
                   <div className="title-box">
                     <h3 className="header-sm project-title">{project.title}</h3>
@@ -94,6 +97,7 @@ export const pageQuery = graphql`
     allWpWork {
       nodes {      
         title
+        slug
         content
         excerpt
         featuredImage {
@@ -101,6 +105,11 @@ export const pageQuery = graphql`
             altText
             srcSet
             sourceUrl
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
           }
         }
         workFields {

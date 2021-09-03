@@ -13,9 +13,7 @@
     h1 {
         @extend .page-title;
         text-align: left;
-        // @media only screen and (min-width: $bp-1100) {
-        //     text-align: center;
-        // }
+        color: $c-lightblue;
     }
 
     .work-buttons {
@@ -23,14 +21,14 @@
         float: left;
         margin-left: 1rem;
 
-        // @media only screen and (min-width: $bp-1100) {
-        //     margin-left: 50%;
-        //     transform: translateX(-50%);
-        // }
+        @media only screen and (min-width: $bp-800) {
+            margin-left: 0;
+        }
 
         a {
-            background-color: transparent;
+            background-color: $c-darkgrey;
             box-shadow: none;
+            border: solid 1px $c-lightblue;
             svg {
                 path, rect {
                     fill: $c-lightblue;
@@ -48,7 +46,10 @@
         }
 
         &:last-of-type {
-            margin-top: 6rem;
+            margin-top: 4rem;
+            @media only screen and (min-width: $bp-800) {
+                margin-top: 6rem;
+            }
         }
 
     }
@@ -63,10 +64,13 @@
     pointer-events: all;
     position: relative;
     float: left;
-    margin-top: 0rem;
     width: 100%;
     margin-left: 50%;
     transform: translateX(-50%);
+    margin-top: 4rem;
+    @media only screen and (min-width: $bp-800) {
+        margin-top: 0rem;
+    }
 
     >div {
         position: relative;
@@ -108,9 +112,8 @@
 
     table.wp-block-table.aligncenter {
     	@media only screen and (min-width: $bp-1200) {
-            width: calc(100% + 16rem);
-            max-width: calc(100% + 16rem);
-            margin-left: -8rem;
+            width: 100%;
+            max-width: 100%;
         }
         img {
             height: auto;
@@ -140,14 +143,12 @@
 
     figcaption {
         @extend .xs_sm;
-        text-align: center;
+        // text-align: center;
         font-style: italic;
         color: lightgrey;
-
         @media only screen and (min-width: $bp-1200) {
-            width: calc(100% + 16rem);
-            max-width: calc(100% + 16rem);
-            margin-left: -8rem;
+            width: 100%;
+            max-width: 100%;
         }
     }
 
@@ -161,6 +162,7 @@
         text-transform: uppercase;
         display: block;
         float: left;
+        clear: both;
         &:not(:first-child) {
             margin-top: 3rem;
         }
@@ -240,12 +242,18 @@
         gap: 1.5rem;
         position: relative;
         justify-content: space-between;
+        @media only screen and (min-width: $bp-1400) {
+            max-width: calc(100vw - 30rem);
+        }
         .single-project {
             float: none;
             margin-bottom: 1.5rem;
             width: 100%;
             @media only screen and (min-width: $bp-700) {
                 width: calc((100% / 2) - 1.5rem);
+            }
+            @media only screen and (min-width: $bp-1400) {
+                width: calc((100% / 4) - (9rem / 4));
             }
         }
     }

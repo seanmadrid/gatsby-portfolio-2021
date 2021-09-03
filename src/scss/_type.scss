@@ -48,13 +48,8 @@
 	line-height: 3.6rem;
 	letter-spacing: 3.5px;
 	@media only screen and (min-width:$bp-1100) {
-		font-size: 4rem;
-		line-height: 4.8rem;
-	}
-	@media only screen and (min-width:$bp-1100) {
-		font-size: 5rem;
-		line-height: 6.8rem;
-		letter-spacing: 3.5px;
+		font-size: 4.5rem;
+		line-height: 5rem;
 	}
 }
 
@@ -106,6 +101,6 @@
 
 .page-title {
 	@extend .header-xl;
-	color: $c-acid !important;
+	color: $c-acid;
 	text-align: center;
 }
