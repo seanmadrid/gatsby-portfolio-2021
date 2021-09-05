@@ -171,7 +171,7 @@ $d-desktop-mh: 450px;
 	left: 0;
 	width: 100vw;
 	height: 100vh;
-	background-color: $c-transgreen;
+	background-color: $c-lightblue;
 	transition: all .5s;
 	&.closed {
 		opacity: 0;
@@ -184,7 +184,7 @@ $d-desktop-mh: 450px;
 	.close {
 		position: absolute;
 	    top: .2rem;
-	    right: 1.75rem;
+	    right: 2rem;
 	    font-size: 3.5rem;
 	    line-height: 5rem;
 	    text-align: center;	    

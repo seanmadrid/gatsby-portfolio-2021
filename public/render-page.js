@@ -3516,7 +3516,7 @@ var plugins = [{
     "cache_busting_mode": "query",
     "crossOrigin": "anonymous",
     "include_favicon": true,
-    "cacheDigest": "4a9773549091c227cd2eb82ccd9c5e3a"
+    "cacheDigest": "7fab3ef6bbe6adaea3ecff319c034631"
   }
 }];
 /* global plugins */
@@ -8190,8 +8190,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var gatsby__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gatsby */ "./.cache/gatsby-browser-entry.js");
-// import { Link } from "gatsby"
- // import Logo from "../images/sean_logo.png"
 
 
 
@@ -8218,8 +8216,7 @@ class MobileMenu extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component
   }
 
   render() {
-    const touchClass = 'ontouchstart' in window || navigator.msMaxTouchPoints ? "is-touchscreen" : "not-touch"; // const touchClass = window.matchMedia("(any-pointer: coarse)").matches ? "is-touchscreen" : "not-touch";
-
+    const touchClass = "not-touch";
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: `mobile-menu ${this.state.opened}`,
       onChange: this.closeMenu
@@ -8333,7 +8330,7 @@ class ProfileIcons extends (react__WEBPACK_IMPORTED_MODULE_0___default().Compone
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "profile-icons"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-      href: "https://www.linkedin.com/in/sean-madrid-67190240/",
+      href: "https://www.linkedin.com/in/sean-madrid",
       target: "_blank",
       rel: "noopener noreferrer",
       className: "linkedin"
@@ -8354,13 +8351,11 @@ class ProfileIcons extends (react__WEBPACK_IMPORTED_MODULE_0___default().Compone
 
 class Header extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
   render() {
-    let pathname = window.location.pathname.replace('/', '') !== "" ? window.location.pathname.replace('/', '') : "home";
+    let pathname = this.props.location.replace("/", "") !== "" ? this.props.location.replace("/", "") : "home";
 
     if (pathname.includes('work/')) {
       pathname = "single-project";
     }
-
-    const touchClass = 'ontouchstart' in window || navigator.msMaxTouchPoints ? "is-touchscreen" : "not-touch"; // const touchClass = window.matchMedia("(any-pointer: coarse)").matches ? "is-touchscreen" : "not-touch";
 
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", {
       className: pathname
@@ -8369,9 +8364,9 @@ class Header extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(gatsby__WEBPACK_IMPORTED_MODULE_1__.Link, {
       to: "/",
       onClick: this.closeMenu,
-      className: `home-link ${touchClass}`
+      className: `home-link not-touch`
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-      className: `house ${touchClass}`
+      className: `house not-touch`
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", {
       width: "22",
       height: "28",
@@ -8445,19 +8440,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-transition-group */ "./node_modules/react-transition-group/esm/Transition.js");
 
 
-const timeout = 250;
+const timeout = 400;
 const getTransitionStyles = {
   entering: {
     position: `absolute`,
-    opacity: 0
+    opacity: 0,
+    transform: `translateX(10rem)`
   },
   entered: {
-    transition: `opacity ${timeout}ms ease-in-out`,
-    opacity: 1
+    transition: `all ${timeout}ms ease-in-out`,
+    opacity: 1,
+    transform: `translateX(0rem)`
   },
   exiting: {
-    transition: `opacity ${timeout}ms ease-in-out`,
-    opacity: 0
+    transition: `all ${timeout}ms ease-in-out`,
+    opacity: 0,
+    transform: `translateX(-10rem)`
   }
 };
 
@@ -8876,20 +8874,24 @@ __webpack_require__.r(__webpack_exports__);
 const TemplateWrapper = ({
   children,
   location
-}) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_helmet__WEBPACK_IMPORTED_MODULE_1__.Helmet, {
-  title: "Sean Madrid: Developer / UX Designer",
-  meta: [{
-    name: `description`,
-    content: `Sample`
-  }, {
-    name: `keywords`,
-    content: `sample, something`
-  }]
-}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-  className: "layout-wrapper"
-}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_waves__WEBPACK_IMPORTED_MODULE_5__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_header__WEBPACK_IMPORTED_MODULE_3__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_transition__WEBPACK_IMPORTED_MODULE_2__.default, {
-  location: location
-}, children)));
+}) => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_helmet__WEBPACK_IMPORTED_MODULE_1__.Helmet, {
+    title: "Sean Madrid: Developer / UX Designer",
+    meta: [{
+      name: `description`,
+      content: `Sample`
+    }, {
+      name: `keywords`,
+      content: `sample, something`
+    }]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "layout-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_waves__WEBPACK_IMPORTED_MODULE_5__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_header__WEBPACK_IMPORTED_MODULE_3__.default, {
+    location: location.pathname
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_transition__WEBPACK_IMPORTED_MODULE_2__.default, {
+    location: location
+  }, children)));
+};
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TemplateWrapper);
 

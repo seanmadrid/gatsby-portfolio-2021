@@ -39,7 +39,7 @@ class WorkButtons extends React.Component {
                 </g>
             </g>
         </svg>
-        <span className="hover-label">Case Study</span></a>}
+        <span className="hover-label">Read More</span></a>}
       </div>
     );
   }

@@ -15,8 +15,10 @@ export default class WorkPage extends React.Component {
   }
 
   componentDidMount() {
-    const shuffled = this.shuffle(this.props.data.allWpWork.nodes);
-    this.setState({projects: shuffled});
+    if(this.props.mount) {
+      const shuffled = this.shuffle(this.props.data.allWpWork.nodes);
+      this.setState({projects: shuffled});
+    }
   }
 
   shuffle(arr) {

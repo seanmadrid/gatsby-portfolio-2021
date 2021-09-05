@@ -353,8 +353,7 @@
 		text-decoration: none;
 		padding: 1.4rem 1.2rem;
 		// background-color: $c-medblue;
-		border-radius: 4rem;
-		margin-right: 4rem;
+		border-radius: 4rem;		
 		margin-bottom: 1rem;
 		font-family: $ff-header;
 		font-size: 1.4rem;
@@ -367,9 +366,13 @@
 		background-repeat: no-repeat;
 		background-position: center;
 		position: relative;
-		@media only screen and (min-width: $bp-1100) {
-			margin-right: 1rem;
+		&:not(:last-of-type):not(:only-of-type) {
+			margin-right: 4rem;
+			@media only screen and (min-width: $bp-1100) {
+				margin-right: 1rem;
+			}
 		}
+		
 		&:hover {
 			box-shadow: none;
 			.hover-label {
@@ -452,6 +455,9 @@
 				color: $c-pink;
 				border-color: $c-pink;
 			}
+		}
+		&.phone {
+			margin-top: 1.5rem;
 		}
 	}
 }

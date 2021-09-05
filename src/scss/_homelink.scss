@@ -26,8 +26,7 @@
         &.not-touch {
             background-color: $c-green;
 
-            &:hover,
-            &:focus {
+            &:hover {
                 outline: 0px;
                 width: 4.8rem;
                 height: 4.8rem;
