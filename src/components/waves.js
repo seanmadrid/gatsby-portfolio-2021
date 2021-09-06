@@ -4,6 +4,7 @@ import React from "react";
 import * as THREE from "three";
 
 class VantaWaves extends React.Component {
+
   componentDidMount() {
     !(function (t) {
       var e = {};
@@ -475,6 +476,7 @@ class VantaWaves extends React.Component {
       },
     });
 
+
     this.effect = window.VANTA.WAVES({
       el: "#waves",
       mouseControls: true,
@@ -484,7 +486,7 @@ class VantaWaves extends React.Component {
       minWidth: 200.0,
       scale: 1.0,
       scaleMobile: 1.0,
-      color: 0x2b2b2b,
+      color: 0x0A1931,
       shininess: 5.0,
       waveHeight: 12.0,
       waveSpeed: 0.9,

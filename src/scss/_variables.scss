@@ -1,5 +1,5 @@
 //COLORS
-$c-blue: #185ADB;
+$c-blue: rgb(24,90,219);
 $c-lightblue: #CDD9FA;
 $c-medblue: #A6BAF2;
 $c-linkblue: #2116A5;
@@ -14,7 +14,7 @@ $c-green: #0DEA02;
 $c-darkgrey: #333436;
 $c-darkgreen: #294206;
 $c-aqua: #96A8DB;
-$c-darkblue: #0A1931;
+$c-darkblue: rgb(10,25,49);
 $c-offwhite: #FDFFF5;
 $c-text: $c-offwhite;
 $c-beige: #FEDDBE;
@@ -28,6 +28,7 @@ $ff-body: 'Nunito Sans', sans-serif;
 
 //TEXT SHADOW
 $ts-primary: 3px 3px 6px rgba(0,0,0,.16);
+$bs-primary: 3px 3px 10px rgba(0,0,0,.25);
 
 //MEDIA QUERIES
 $bp-500: 500px;

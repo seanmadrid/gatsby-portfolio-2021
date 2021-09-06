@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import WorkButtons from "../components/work-buttons";
 import { graphql, Link } from "gatsby";
+import ProjectCard from "../components/project-cards";
+import WorkButtons from "../components/work-buttons";
 
 class ThreeRandomProjects extends React.Component {
 
@@ -14,21 +15,14 @@ class ThreeRandomProjects extends React.Component {
   }
 
   componentDidMount() {
-    
     const remove = this.props.remove;
-
     let projects = this.shuffle(this.props.projects);
-    
     projects = projects.filter(function(project, i) {
       return project !== remove;
     });
-
-    let size = 4;
-    
+    let size = 3;
     projects = projects.slice(0, size);
-
     this.setState({projects: projects});
-    
   }
 
   shuffle(arr) {
@@ -47,44 +41,29 @@ class ThreeRandomProjects extends React.Component {
   }
 
   render() {
-    const projects = this.state.projects
+    const projects = this.state.projects;    
     return (
       <div className="project-index other-projects">
         <h2>More Projects</h2>
         <div className="flex">
           {projects &&
             projects.map((project, n) => {
-              
-              let live_url = project.workFields.liveUrl ? project.workFields.liveUrl.url : "";
-              let code_url = project.workFields.codeUrl ? project.workFields.codeUrl.url : "";
-              let story_link = "/work/" + project.slug;
-              
+              let view_link = project.workFields.liveUrl ? project.workFields.liveUrl.url : "";
+              let code_link = project.workFields.codeUrl ? project.workFields.codeUrl.url : "";
+              let story_link = "/work/" + project.slug;              
+              const iss = project.featuredImage.node.localFile.childImageSharp.gatsbyImageData.images.sources[0];
+              const imageSrc = project.featuredImage.node.localFile.childImageSharp.gatsbyImageData.images.fallback.src;
               return (
-                <div key={n} className="single-project">
-                  <div className="image-wrapper">
-                    <Link to={story_link} className="image-link">
-                      <img
-                        className="featured-project-image"
-                        src={project.featuredImage.node.sourceUrl}
-                        alt={project.featuredImage.node.altText}
-                      />
-                    </Link>
-                  </div>
-                  <div className="title-box">
-                    <h3 className="header-sm project-title">{project.title}</h3>
-                    <span
-                      className="excerpt"
-                      dangerouslySetInnerHTML={{ __html: project.excerpt }}
-                    ></span>
-                    
-                    <WorkButtons
-                      viewLink={live_url}
-                      codeLink={code_url}
-                      storyLink={story_link}
-                      color="#FF1493"
-                    />
-                  </div>
-                </div>
+                <ProjectCard 
+                  key={n}
+                  storyLink={story_link} 
+                  codeLink={code_link} 
+                  viewLink={view_link} 
+                  imgSrcSet={iss} 
+                  imgSrc={imageSrc} 
+                  imgAlt={project.featuredImage.node.altText} 
+                  title={project.title} 
+                  excerpt={project.excerpt} />
               );
             })}
         </div> 
@@ -144,18 +123,16 @@ class SingleProject extends React.Component {
       currentProject = project;
     }
 
-    console.log(codeUrl);
-
     return (
       <>
         <div className="single-project-wrap">
           <h1 className="header-l">{title}</h1>
-          <WorkButtons viewLink={liveUrl} codeLink={codeUrl} storyLink="" />
+          <WorkButtons viewLink={liveUrl} codeLink={codeUrl} storyLink="" single={true}/>
           <div
             className="project-content"
             dangerouslySetInnerHTML={{ __html: content }}
           ></div>
-          <WorkButtons viewLink={liveUrl} codeLink={codeUrl} storyLink="" />
+          <WorkButtons viewLink={liveUrl} codeLink={codeUrl} storyLink="" single={true}/>
         </div>
         { this.state.allProjects.length > 0 &&
           <ThreeRandomProjects projects={this.state.allProjects} remove={currentProject} />
@@ -185,6 +162,11 @@ query innerWorkQuery {
           altText
           srcSet
           sourceUrl
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
         }
       }
       workFields {

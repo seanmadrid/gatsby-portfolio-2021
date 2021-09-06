@@ -8817,7 +8817,7 @@ class VantaWaves extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component
       minWidth: 200.0,
       scale: 1.0,
       scaleMobile: 1.0,
-      color: 0x2b2b2b,
+      color: 0x0A1931,
       shininess: 5.0,
       waveHeight: 12.0,
       waveSpeed: 0.9,
@@ -8886,7 +8886,9 @@ const TemplateWrapper = ({
     }]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "layout-wrapper"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_waves__WEBPACK_IMPORTED_MODULE_5__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_header__WEBPACK_IMPORTED_MODULE_3__.default, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_waves__WEBPACK_IMPORTED_MODULE_5__.default, {
+    color: "#E9FF91"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_header__WEBPACK_IMPORTED_MODULE_3__.default, {
     location: location.pathname
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_transition__WEBPACK_IMPORTED_MODULE_2__.default, {
     location: location

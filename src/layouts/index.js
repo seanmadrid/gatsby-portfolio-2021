@@ -17,7 +17,7 @@ const TemplateWrapper = ({ children, location }) => {
         ]}
       ></Helmet>
       <div className="layout-wrapper">
-        <VantaWaves />
+        <VantaWaves color="#E9FF91" />
         <Header location={location.pathname} />
         <Transition location={location}>{children}</Transition>
       </div>

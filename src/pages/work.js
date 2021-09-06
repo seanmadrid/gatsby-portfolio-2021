@@ -1,8 +1,10 @@
-import React from "react"
-import SEO from "../components/seo"
+import React from 'react'
+import SEO from '../components/seo'
 import PropTypes from 'prop-types'
 import { graphql, Link } from 'gatsby'
-import WorkButtons from '../components/work-buttons'
+import ProjectCard from '../components/project-cards'
+
+
 
 export default class WorkPage extends React.Component {
 
@@ -10,14 +12,15 @@ export default class WorkPage extends React.Component {
     super();
 
     this.state = {
-      projects: []
+      projects: [],
+      mounted: false
     }
   }
 
   componentDidMount() {
-    if(this.props.mount) {
+    if (this.props.mount) {
       const shuffled = this.shuffle(this.props.data.allWpWork.nodes);
-      this.setState({projects: shuffled});
+      this.setState({ projects: shuffled });
     }
   }
 
@@ -69,16 +72,7 @@ export default class WorkPage extends React.Component {
               }
 
               return (
-                <div key={n} className="single-project">
-                  <div className="image-wrapper">
-                    <Link to={story_link} className="image-link" ><img className="featured-project-image" srcSet={iss['srcSet']} sizes={iss['sizes']} src={imageSrc} alt={project.featuredImage.node.altText} /></Link>
-                  </div>
-                  <div className="title-box">
-                    <h3 className="header-sm project-title">{project.title}</h3>
-                    <span className="excerpt" dangerouslySetInnerHTML={{ __html: project.excerpt }}></span>
-                    <WorkButtons viewLink={view_link} codeLink={code_link} storyLink={story_link} color="#F04B82" />
-                  </div>
-                </div>
+                <ProjectCard key={n} storyLink={story_link} codeLink={code_link} viewLink={view_link} imgSrcSet={iss} imgSrc={imageSrc} imgAlt={project.featuredImage.node.altText} title={project.title} excerpt={project.excerpt} single={false} />
               )
             })
             }
@@ -90,7 +84,7 @@ export default class WorkPage extends React.Component {
 }
 
 WorkPage.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.object,
   edges: PropTypes.array,
 }
 
