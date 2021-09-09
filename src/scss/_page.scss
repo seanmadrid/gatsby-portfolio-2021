@@ -8,6 +8,10 @@
 	transition: opacity .33s ease-in;
 	transition-delay: opacity .2s;
 	opacity: 0;
+	padding: 0 4rem 0 5rem;
+	@media only screen and (min-width: $bp-800) {
+		padding: 0;
+	}
 	&.loaded {
 		opacity: 1;
 	}
@@ -67,7 +71,7 @@
 	@extend .fw;
 	max-width: $d-max-width-xl;
 	position: relative;
-	padding: 6rem;
+	padding: 6rem 3rem 6rem 8rem;
 	float: left;
 	margin-left: calc(50% - 1.5rem);
 	margin-top: 5rem;
@@ -78,6 +82,7 @@
 		margin-left: 50%;
 		margin-top: 50vh;
 		transform: translateX(-50%) translateY(-50%);
+		padding: 6rem 3rem 6rem 6rem;
 	}
 	h1 {
 		@extend .page-title;
@@ -273,7 +278,7 @@
     transform: translateX(-50%);
     z-index: 999;
     padding-right: 1rem;
-    padding-left: 4rem;
+    padding-left: 7rem;
     &:not(.other-projects) {
     	h1 {
     		@extend .page-title;
@@ -281,7 +286,7 @@
     		color: $c-lightblue !important;
     	}
     }
-    @media only screen and (min-width:$bp-800){ 
+    @media only screen and (min-width:$bp-1100){ 
     	padding-left: 0;
     	padding-right: 0;
     	margin-left: 50%;
@@ -290,7 +295,7 @@
 	h2 {
 		margin-top: 0;
 		margin-bottom: 2rem;
-		@media only screen and (min-width:$bp-800){ 
+		@media only screen and (min-width:$bp-1100){ 
 			margin-bottom: 4.7rem;
 		}
 	}
@@ -345,7 +350,10 @@ $c-btn-svg-hov: $c-blue;
 			fill: $c-btn-svg;
 		}
 		&:not(:last-of-type):not(:only-of-type) {
-			margin-right: 2rem;
+			margin-right: 3rem;
+			@media only screen and (min-width: $bp-1100) {
+				margin-right: 2rem;
+			}
 		}
 		
 		&:hover {
@@ -365,7 +373,7 @@ $c-btn-svg-hov: $c-blue;
 			font-size: 1.2rem;
 			font-weight: 500;
 			left: 50%;
-			top: 100%;
+			top: calc(100% + 5px);
 			transform: translateX(-50%);
 			white-space: nowrap;
 			opacity: 1;

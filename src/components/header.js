@@ -89,7 +89,7 @@ const ResumeLinks = (props) => (
   <div className={`resume-buttons${props.show ? " show" : " hide"}`}>
     <a href={resumeURL} target="_blank" rel="noopener noreferrer" className="view"><span>View PDF</span></a>
     <a href={resumeDownload} className="download" download><span>Download PDF</span></a>
-    <a href={googleDoc} className="doc" download><span>View Google Doc</span></a>
+    <a href={googleDoc} target="_blank" className="doc"><span>View Google Doc</span></a>
   </div>
 )
 

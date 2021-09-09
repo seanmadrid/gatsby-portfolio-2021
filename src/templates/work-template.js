@@ -118,10 +118,12 @@ class SingleProject extends React.Component {
     if(project.length !== 0) {
       content = project.content;
       title = project.title;
-      liveUrl = project.workFields.liveUrl ? project.workFields.liveUrl : "";
-      codeUrl = project.workFields.codeUrl ? project.workFields.codeUrl : "";
+      liveUrl = project.workFields.liveUrl ? project.workFields.liveUrl.url : "";
+      codeUrl = project.workFields.codeUrl ? project.workFields.codeUrl.url : "";
       currentProject = project;
     }
+
+    console.log(codeUrl.url);
 
     return (
       <>
