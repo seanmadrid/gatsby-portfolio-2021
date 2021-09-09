@@ -5,6 +5,12 @@
 	margin-top: 50vh;
 	transform: translateY(-50%) translateX(-50%);
 	float: left;
+	transition: opacity .33s ease-in;
+	transition-delay: opacity .2s;
+	opacity: 0;
+	&.loaded {
+		opacity: 1;
+	}
 	* {
 		width: 100%;
 		text-align: left;
@@ -139,7 +145,7 @@
 	}
 }
 
-.resume {
+.resume-wrap {
 	position: relative;
 	width: calc(100% - 17rem);
 	margin-top: 10rem;
@@ -148,16 +154,23 @@
 	transform: translateX(-50%);
 	pointer-events: all;
 	z-index: 9999;
+	// &:after {
+	// 	content: '';
+	// 	display: block;
+	// 	width: 100%;
+	// 	padding-bottom: 120%;
+	// }
 
 	@media only screen and (min-width:$bp-800) {
 		margin-left: 50%;
 	    margin-top: 20rem;
-	    max-width: $d-max-width-xxl;
+	    max-width: 84rem;
 	}
 
 	@media only screen and (min-width:$bp-1000) {
-		max-width: $d-max-width-xl;
+		max-width: 84rem;
 	}
+
     img {
     	display: block;
     	position: relative;
@@ -165,16 +178,32 @@
     	height: auto;
     	box-shadow: $ts-primary;
     }
+
+	iframe {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: 0px;
+		box-shadow: $bs-primary;
+	}
 }
 
 .resume-buttons {
 	position: fixed;
-	bottom: calc(100vh - 17rem);
-	right: 1rem;
 	pointer-events: all;
-	@media only screen and (min-width:$bp-800) {
-		bottom: 3rem;
+	z-index: 9999;
+	bottom: 1.5rem;
+	transition: all .44s;
+	&.hide {		
+		right: -4rem;
+		opacity: 0;
+	}
+	&.show {
 		right: 1.5rem;
+		opacity: 1;
 	}
 	a {
 		display: block;
@@ -194,16 +223,29 @@
 		background-repeat: no-repeat;
 		background-position: center;
 		&.view {
-			background-image: url($svg-view);
+			background-size: 45%;
+			background-image: url($svg-page);
 		}
 		&.download {
 			background-size: 55%;
 			background-image: url($svg-download);
 		}
+		&.doc {
+			background-size: 55%;
+			background-image: url($svg-drive);
+		}
 		span {
 			display: block;
-			text-indent: -9999px;
+			// text-indent: -9999px;
 			position: absolute;
+			color: $c-acid;
+			white-space: nowrap;
+			right: 4rem;
+			transform: translateY(-5px);
+			font-weight: 400;
+			font-size: 14px;
+			opacity: 0;
+			transition: opacity .33s ease-in;
 		}
 		&:not(:last-child) {
 			margin-bottom: 1rem;
@@ -211,6 +253,11 @@
 		&:hover {
 			box-shadow: none;
 			background-color: $c-acid;
+			@media only screen and (min-width:$bp-1200) {
+				span {
+					opacity: 1;
+				}
+			}
 		}
 	}
 }

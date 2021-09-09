@@ -8315,7 +8315,7 @@ class DesktopMenu extends (react__WEBPACK_IMPORTED_MODULE_0___default().Componen
       to: "/about",
       className: "about-link"
     }, "About"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(gatsby__WEBPACK_IMPORTED_MODULE_1__.Link, {
-      to: "/cv",
+      to: "/resume",
       className: "resume-link"
     }, "Resume"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(gatsby__WEBPACK_IMPORTED_MODULE_1__.Link, {
       to: "/contact",
@@ -8349,9 +8349,31 @@ class ProfileIcons extends (react__WEBPACK_IMPORTED_MODULE_0___default().Compone
 
 }
 
+const resumeURL = "https://drive.google.com/file/d/1lb8meSbTsSgK59EekfbKLnPTu9IABZ7s/view?usp=sharing";
+const resumeDownload = "https://drive.google.com/uc?export=download&id=1lb8meSbTsSgK59EekfbKLnPTu9IABZ7s";
+const googleDoc = "https://docs.google.com/document/d/1hvv6_E9mQWNqKaehx1QvqJYRbEn-t0_CJ-N8yjPmYl0/edit?usp=sharing";
+
+const ResumeLinks = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  className: `resume-buttons${props.show ? " show" : " hide"}`
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+  href: resumeURL,
+  target: "_blank",
+  rel: "noopener noreferrer",
+  className: "view"
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "View PDF")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+  href: resumeDownload,
+  className: "download",
+  download: true
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Download PDF")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+  href: googleDoc,
+  className: "doc",
+  download: true
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "View Google Doc")));
+
 class Header extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
   render() {
     let pathname = this.props.location.replace("/", "") !== "" ? this.props.location.replace("/", "") : "home";
+    console.log(pathname);
 
     if (pathname.includes('work/')) {
       pathname = "single-project";
@@ -8414,7 +8436,9 @@ class Header extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
       fill: "#CDD9FA"
     }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
       className: "text"
-    }, "Return Home"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ProfileIcons, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(DesktopMenu, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(MobileMenu, null));
+    }, "Return Home"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ProfileIcons, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(DesktopMenu, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(MobileMenu, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ResumeLinks, {
+      show: pathname === "resume" ? true : false
+    }));
   }
 
 }
@@ -8440,7 +8464,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-transition-group */ "./node_modules/react-transition-group/esm/Transition.js");
 
 
-const timeout = 400;
+const timeout = 300;
 const getTransitionStyles = {
   entering: {
     position: `absolute`,
