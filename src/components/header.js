@@ -99,14 +99,14 @@ class Header extends React.Component {
 
     let pathname = this.props.location.replace("/", "") !== "" ? this.props.location.replace("/", "") : "home";
 
-    console.log(pathname);
+    let focus = this.props.focus !== "" ? " focus-" + this.props.focus : "";
 
     if (pathname.includes('work/')) {
       pathname = "single-project";
     }
 
     return (
-      <header className={pathname}>
+      <header className={`${pathname}${focus}`}>
         <div className="logo-wrap">
           <Link to="/" onClick={this.closeMenu} className={`home-link not-touch`} >
             <div className={`house not-touch`}>

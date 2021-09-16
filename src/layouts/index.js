@@ -7,6 +7,8 @@ import VantaWaves from "../components/waves"
 
 const TemplateWrapper = ({ children, location }) => {
 
+  const focus = location.search ? location.search.replace("?focus=", "") : "";
+
   return (
     <div>
       <Helmet
@@ -18,7 +20,7 @@ const TemplateWrapper = ({ children, location }) => {
       ></Helmet>
       <div className="layout-wrapper">
         <VantaWaves color="#E9FF91" />
-        <Header location={location.pathname} />
+        <Header location={location.pathname} focus={focus}/>
         <Transition location={location}>{children}</Transition>
       </div>
     </div>

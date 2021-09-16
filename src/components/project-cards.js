@@ -26,9 +26,10 @@ export default class ProjectCard extends React.Component {
     hoverOff() {
         this.setState({ hovered: false });
     }
+
     render() {
         return (
-            <div className={`single-project${this.state.hovered ? ' hovered' : ''}`}>
+            <div className={`single-project${this.state.hovered ? ' hovered' : ''} ${this.props.tags}`}>
                 <Link to={this.props.storyLink} onMouseEnter={this.hoverOn} onMouseLeave={this.hoverOff} >
                     <div className="image-wrapper">
                         <img className="featured-project-image" srcSet={this.props.imgSrcSet.srcSet} sizes={this.props.imgSrcSet.srcSet.sizes} src={this.props.imageSrc} alt={this.props.imgAlt} />

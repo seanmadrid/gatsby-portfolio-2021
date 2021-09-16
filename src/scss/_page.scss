@@ -315,6 +315,18 @@
 	}
 }
 
+header.focus-uxui {
+	~ div div.single-project:not(.tag-ux-ui) {
+		display: none;
+	}
+}
+
+header:not(.focus-uxui) {
+	~ div div.single-project.tag-ux-ui {
+		display: none;
+	}
+}
+
 $c-btn: $c-lightblue;
 $c-btn-svg: $c-blue;
 $c-btn-hov: $c-acid;

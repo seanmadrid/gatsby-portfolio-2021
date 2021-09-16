@@ -123,8 +123,6 @@ class SingleProject extends React.Component {
       currentProject = project;
     }
 
-    console.log(codeUrl.url);
-
     return (
       <>
         <div className="single-project-wrap">

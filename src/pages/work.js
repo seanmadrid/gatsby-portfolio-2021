@@ -47,6 +47,7 @@ export default class WorkPage extends React.Component {
           <h1 className="header-l">My Work</h1>
           <div className="flex">
             {projects && projects.map((project, n) => {
+              let tags = "";
               let view_link;
               let code_link;
               let story_link;
@@ -71,8 +72,21 @@ export default class WorkPage extends React.Component {
                 story_link = "";
               }
 
+              if(project.tags.nodes.length > 0) {
+                for(let t = 0; t <= project.tags.nodes.length - 1; t++) {
+                  let tagslug = project.tags.nodes[t].slug;
+                  if(tagslug !== "featured") {
+                    if(tags === "") {
+                      tags = "tag-" + tagslug;
+                    }else {
+                      tags += " tag-" + tagslug;
+                    }
+                  }
+                }
+              }
+
               return (
-                <ProjectCard key={n} storyLink={story_link} codeLink={code_link} viewLink={view_link} imgSrcSet={iss} imgSrc={imageSrc} imgAlt={project.featuredImage.node.altText} title={project.title} excerpt={project.excerpt} single={false} />
+                <ProjectCard key={n} storyLink={story_link} codeLink={code_link} viewLink={view_link} imgSrcSet={iss} imgSrc={imageSrc} imgAlt={project.featuredImage.node.altText} title={project.title} excerpt={project.excerpt} single={false} tags={tags} />
               )
             })
             }
@@ -89,35 +103,41 @@ WorkPage.propTypes = {
 }
 
 export const pageQuery = graphql`
-  query workQuery {
-    allWpWork {
-      nodes {      
-        title
-        slug
-        content
-        excerpt
-        featuredImage {
-          node {
-            altText
-            srcSet
-            sourceUrl
-            localFile {
-              childImageSharp {
-                gatsbyImageData
-              }
+query workQuery {
+  allWpWork {
+    nodes {
+      title
+      slug
+      content
+      excerpt
+      featuredImage {
+        node {
+          altText
+          srcSet
+          sourceUrl
+          localFile {
+            childImageSharp {
+              gatsbyImageData
             }
           }
         }
-        workFields {
-          liveUrl {
-            url
-            title
-          }
-          codeUrl {
-            url
-            title
-          }
+      }
+      workFields {
+        liveUrl {
+          url
+          title
+        }
+        codeUrl {
+          url
+          title
+        }
+      }
+      tags {
+        nodes {
+          slug
         }
       }
     }
-  }`
+  }
+}
+`
