@@ -5,6 +5,17 @@ import { graphql, Link } from 'gatsby'
 import ProjectCard from '../components/project-cards'
 
 
+class WorkFocus extends React.Component {
+  render() {
+    let workfocus = " ";
+    if(this.props.focus === "uxui") {
+      workfocus = " UX/UI";
+    }
+    return (
+      <span className={`work-focus-${this.props.focus}`}>{workfocus}</span>
+    )
+  }
+} 
 
 export default class WorkPage extends React.Component {
 
@@ -18,9 +29,15 @@ export default class WorkPage extends React.Component {
   }
 
   componentDidMount() {
+    const thiss = this;
     if (this.props.mount) {
       const shuffled = this.shuffle(this.props.data.allWpWork.nodes);
       this.setState({ projects: shuffled });
+    }
+    if(!this.state.mounted) {
+      setTimeout(() => {
+        thiss.setState({mounted: true});
+      }, 1500);
     }
   }
 
@@ -44,8 +61,9 @@ export default class WorkPage extends React.Component {
       <div>
         <SEO title="The Work of Sean Madrid" />
         <div className="project-index">
-          <h1 className="header-l">My Work</h1>
-          <div className="flex">
+          <h1 className="header-l">My<WorkFocus focus="uxui" /> Work</h1>
+          <div className="work-subheadline show-uxui">This is a showcase of my work as a UX/UI designer.</div>
+          <div className={`flex${this.state.mounted ? " mounted" : ""}`}>
             {projects && projects.map((project, n) => {
               let tags = "";
               let view_link;
@@ -84,7 +102,6 @@ export default class WorkPage extends React.Component {
                   }
                 }
               }
-
               return (
                 <ProjectCard key={n} storyLink={story_link} codeLink={code_link} viewLink={view_link} imgSrcSet={iss} imgSrc={imageSrc} imgAlt={project.featuredImage.node.altText} title={project.title} excerpt={project.excerpt} single={false} tags={tags} />
               )

@@ -2,7 +2,7 @@ import React from "react"
 import SEO from "../components/seo"
 import ResumeImg from '../images/Sean-Madrid-Resume-2021.jpg';
 
-const resumeURL = "https://drive.google.com/file/d/1lb8meSbTsSgK59EekfbKLnPTu9IABZ7s/view?usp=sharing";
+const resumeURL = "https://drive.google.com/file/d/1XnJ0Kmg_dTijCkSrY8yvbRUpo_euUJsF/view?usp=sharing";
 
 const ResumePage = () => (
 	<div className="resume-page">

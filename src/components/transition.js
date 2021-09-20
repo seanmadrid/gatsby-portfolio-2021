@@ -34,9 +34,10 @@ class Transition extends React.PureComponent {
             enter: timeout,
             exit: timeout,
           }}
+          
         >
           {status => (
-            <div
+            <div className={`page-wrapper focus-${this.props.focus}`}
               style={{
                 ...getTransitionStyles[status],
               }}

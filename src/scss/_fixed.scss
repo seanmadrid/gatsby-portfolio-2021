@@ -100,6 +100,7 @@ $d-desktop-mh: 450px;
 		pointer-events: all;
 		backface-visibility: hidden;
 		font-weight: 300;
+		text-transform: capitalize;
 		&:after {
 			content: '';
 			position: absolute;
@@ -206,6 +207,7 @@ $d-desktop-mh: 450px;
 		text-decoration: none;
 		color: $c-blue;
 		margin-bottom: 3rem;
+		text-transform: capitalize;
 	}
 	a[aria-current="page"]:not(.mobile-home-link) {
 	    font-weight: 400;

@@ -21,7 +21,7 @@ const TemplateWrapper = ({ children, location }) => {
       <div className="layout-wrapper">
         <VantaWaves color="#E9FF91" />
         <Header location={location.pathname} focus={focus}/>
-        <Transition location={location}>{children}</Transition>
+        <Transition location={location} focus={focus}>{children}</Transition>
       </div>
     </div>
   )

@@ -56,13 +56,13 @@ class MobileMenu extends React.Component {
 
 class DesktopMenu extends React.Component {
   render() {
+    const menuLinks = ['work', 'about', 'resume', 'contact'];
     return (
       <div className={`menuWrap desktop-menu`}>
         <div className="menu">
-          <Link to="/work" className="work-link">Work</Link>
-          <Link to="/about" className="about-link">About</Link>
-          <Link to="/resume" className="resume-link">Resume</Link>
-          <Link to="/contact" className="contact-link">Contact</Link>
+          {menuLinks && menuLinks.map((ml, x) => {
+            return <Link key={x} to={`/${ml}`} className={`${ml}-link`} aria-current={this.props.current === ml ? "page" : ""}>{ml}</Link>
+          })}
         </div>
       </div>
     );
@@ -81,8 +81,8 @@ class ProfileIcons extends React.Component {
   }
 }
 
-const resumeURL = "https://drive.google.com/file/d/1lb8meSbTsSgK59EekfbKLnPTu9IABZ7s/view?usp=sharing";
-const resumeDownload = "https://drive.google.com/uc?export=download&id=1lb8meSbTsSgK59EekfbKLnPTu9IABZ7s";
+const resumeURL = "https://drive.google.com/file/d/1XnJ0Kmg_dTijCkSrY8yvbRUpo_euUJsF/view?usp=sharing";
+const resumeDownload = "https://drive.google.com/uc?export=download&id=1XnJ0Kmg_dTijCkSrY8yvbRUpo_euUJsF";
 const googleDoc = "https://docs.google.com/document/d/1hvv6_E9mQWNqKaehx1QvqJYRbEn-t0_CJ-N8yjPmYl0/edit?usp=sharing";
 
 const ResumeLinks = (props) => (
@@ -96,14 +96,19 @@ const ResumeLinks = (props) => (
 class Header extends React.Component {
 
   render() {
-
     let pathname = this.props.location.replace("/", "") !== "" ? this.props.location.replace("/", "") : "home";
 
-    let focus = this.props.focus !== "" ? " focus-" + this.props.focus : "";
-
-    if (pathname.includes('work/')) {
-      pathname = "single-project";
+    if (pathname.includes("work/")) {
+      let last5 = pathname.substring(pathname.length - 5);
+      if (last5 !== "work/") {
+        pathname = "single-project";
+      }
     }
+
+    pathname = pathname.replace("/", "").replace("/", "");
+    console.log(pathname);
+
+    let focus = this.props.focus !== "" ? " focus-" + this.props.focus : "";
 
     return (
       <header className={`${pathname}${focus}`}>
@@ -118,8 +123,8 @@ class Header extends React.Component {
           </Link>
         </div>
         <ProfileIcons />
-        <DesktopMenu />
-        <MobileMenu />
+        <DesktopMenu current={pathname} />
+        <MobileMenu current={pathname} />
         <ResumeLinks show={pathname === "resume" ? true : false} />
       </header>
     );

@@ -10,7 +10,7 @@ const IndexPage = () => {
   });
 
   return (
-    <div>
+    <div className="view-start-wrapper">
       <SEO title="Home" />
       <div className={`view-start${loaded ? " loaded" : ""}`}>
         <h1>Sean Madrid</h1>
